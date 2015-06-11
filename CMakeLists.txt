@@ -5,6 +5,8 @@ project(muon)
 set(muon_VERSION_MASTER 0)
 set(muon_VERSION_MINOR 1)
 
+set(CMAKE_CXX_FLAGS "-std=c++14 -Wall -Wextra")
+
 option(FRONTEND_TERMBOX "Build the termbox frontend" ON)
 
 configure_file(
