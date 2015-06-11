@@ -1,0 +1,2 @@
+#define muon_VERSION_MASTER @muon_VERSION_MASTER@
+#define muon_VERSION_MINOR @muon_VERSION_MINOR@
