@@ -13,3 +13,5 @@ configure_file(
 include_directories("${PROJECT_BINARY_DIR}")
 
 add_executable(muon src/main.cpp)
+
+install(TARGETS muon DESTINATION bin)
