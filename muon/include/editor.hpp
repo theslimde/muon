@@ -26,4 +26,14 @@ class editor {
    */
   editor(int argc, char** argv);
 
+  /** Send event to editor
+   * Use this function to forward the events from the frontend
+   * to the editor.
+   * \see: event::event_types
+   * \see: event::event
+   *
+   * \param: ev : a boost variant object of type event::event,
+   *              specifying the event that occured.
+   */
+  void send_event(const event::event ev);
 };
