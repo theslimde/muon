@@ -1,5 +1,7 @@
 #pragma once
 
+#include "event.hpp"
+
 /** The main editor class.
  * This is the only class that a frontend needs to know about.
  *

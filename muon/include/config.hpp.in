@@ -1,2 +1,2 @@
-const int muon_VERSION_MASTER = @muon_VERSION_MASTER@;
-const int muon_VERSION_MINOR = @muon_VERSION_MINOR@;
+constexpr int muon_VERSION_MASTER = @muon_VERSION_MASTER@;
+constexpr int muon_VERSION_MINOR = @muon_VERSION_MINOR@;
