@@ -25,3 +25,6 @@ build
 
 #Extern directory
 extern
+
+#Documentation
+muon/doc
