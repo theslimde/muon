@@ -2,6 +2,8 @@
 #include <stdexcept>
 #include <string>
 
+#include "editor.hpp"
+
 /** RAII wrapper for termbox
  */
 class termbox {
@@ -21,37 +23,63 @@ public:
   }
 };
 
-int main() {
+int main(int argc, char** argv) {
 
   termbox tb;
+  editor edit(argc, argv);
 
-  tb_clear();
-  tb_change_cell(1,0,'H',184, 240);
-  tb_change_cell(2,0,'a',184, 240);
-  tb_change_cell(3,0,'l',184, 240);
-  tb_change_cell(4,0,'l',184, 240);
-  tb_change_cell(5,0,'o',184, 240);
-  tb_change_cell(6,0,' ',184, 240);
-  tb_change_cell(7,0,'W',184, 240);
-  tb_change_cell(8,0,'o',184, 240);
-  tb_change_cell(9,0,'r',184, 240);
-  tb_change_cell(10,0,'l',184, 240);
-  tb_change_cell(11,0,'d',184, 240);
-  tb_change_cell(12,0,'!',184, 240);
+  while(true) {
+    tb_event ev;
+    tb_poll_event(&ev);
 
-  const auto result = std::string("W: ") + std::to_string(tb_width()) + std::string(", H: ") + std::to_string(tb_height());
+    event::event muon_event;
 
-  int i = 0;
-  for(auto c : result) {
-    tb_change_cell(i,1, c, 184, 240);
-    i++;
+    switch(ev.type) {
+    case TB_EVENT_KEY:
+      {
+        event::text_entry te { ev.ch };
+        muon_event = te;
+      }
+      break;
+    case TB_EVENT_RESIZE:
+      {
+        event::resize r { ev.w, ev.h };
+        muon_event = r;
+      }
+      break;
+    case TB_EVENT_MOUSE:
+      break;
+    }
+
   }
 
-  tb_present();
+  // tb_clear();
+  // tb_change_cell(1,0,'H',184, 240);
+  // tb_change_cell(2,0,'a',184, 240);
+  // tb_change_cell(3,0,'l',184, 240);
+  // tb_change_cell(4,0,'l',184, 240);
+  // tb_change_cell(5,0,'o',184, 240);
+  // tb_change_cell(6,0,' ',184, 240);
+  // tb_change_cell(7,0,'W',184, 240);
+  // tb_change_cell(8,0,'o',184, 240);
+  // tb_change_cell(9,0,'r',184, 240);
+  // tb_change_cell(10,0,'l',184, 240);
+  // tb_change_cell(11,0,'d',184, 240);
+  // tb_change_cell(12,0,'!',184, 240);
 
-  tb_event ev;
+  // const auto result = std::string("W: ") + std::to_string(tb_width()) + std::string(", H: ") + std::to_string(tb_height());
 
-  tb_poll_event(&ev);
+  // int i = 0;
+  // for(auto c : result) {
+  //   tb_change_cell(i,1, c, 184, 240);
+  //   i++;
+  // }
+
+  // tb_present();
+
+  // tb_event ev;
+
+  // tb_poll_event(&ev);
 
 	return 0;
 }
